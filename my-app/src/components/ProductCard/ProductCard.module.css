@@ -1,0 +1,160 @@
+.card {
+  background: white;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+}
+
+.image {
+  width: 100%;
+  height: 200px;
+  background: #f8f9fa;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  position: relative;
+}
+
+.image img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+}
+
+.imagePlaceholder {
+  color: #666;
+  font-size: 0.9rem;
+  text-align: center;
+  display: none; /* Скрыто по умолчанию, показывается только при ошибке загрузки */
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+}
+
+.content {
+  padding: 1.5rem;
+}
+
+.name {
+  font-size: 1.2rem;
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+  color: #333;
+}
+
+.brand {
+  color: #666;
+  font-size: 0.9rem;
+  margin-bottom: 1rem;
+}
+
+.specs {
+  margin-bottom: 1rem;
+}
+
+.spec {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 0.3rem;
+  font-size: 0.85rem;
+}
+
+.specKey {
+  color: #666;
+}
+
+.specValue {
+  color: #333;
+  font-weight: 500;
+}
+
+.price {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #667eea;
+  margin-bottom: 0.5rem;
+}
+
+.rating {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+  color: #ffc107;
+}
+
+.ratingValue {
+  color: #666;
+  font-size: 0.9rem;
+}
+
+.actions {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.actions button {
+  padding: 0.7rem;
+  border: none;
+  border-radius: 5px;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.addToCart {
+  background: #667eea;
+  color: white;
+}
+
+.addToCart:hover {
+  background: #5a6fd8;
+}
+
+.compare {
+  background: #f8f9fa;
+  color: #333;
+  border: 1px solid #dee2e6 !important;
+}
+
+.compare:hover {
+  background: #e9ecef;
+}
+
+.configurator {
+  background: #28a745;
+  color: white;
+}
+
+.configurator:hover {
+  background: #218838;
+}
+
+@media (max-width: 768px) {
+  .content {
+    padding: 1rem;
+  }
+  
+  .actions {
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+  
+  .actions button {
+    flex: 1;
+    min-width: 120px;
+  }
+}
