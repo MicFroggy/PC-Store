@@ -1,8 +1,9 @@
-name: Deploy to GitHub Pages
+name: Deploy React Vite Site
 
 on:
   push:
-    branches: 'main' # Если ваша основная ветка называется master, замените main на master
+    branches: ["main"]
+  workflow_dispatch:
 
 permissions:
   contents: read
@@ -10,11 +11,11 @@ permissions:
   id-token: write
 
 concurrency:
-  group: 'pages'
+  group: "pages"
   cancel-in-progress: true
 
 jobs:
-  deploy_site:
+  build-and-deploy:
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
@@ -23,23 +24,22 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Установка Node.js
+      - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
           node-version: 20
-          cache: npm
 
-      - name: Установка зависимостей
-        run: npm ci
+      - name: Install dependencies
+        run: npm install # Специально заменили на npm install, чтобы не было ошибки lock-файла
 
-      - name: Сборка проекта (Build)
+      - name: Build project
         run: npm run build
 
-      - name: Загрузка артефактов
+      - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: 'dist' # Для Create React App (CRA) замените 'dist' на 'build'
+          path: 'my-app' # Это путь к папке, где Vite создаёт ваш index.html после сборки
 
-      - name: Деплой на GitHub Pages
+      - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
